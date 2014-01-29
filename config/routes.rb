@@ -37,7 +37,7 @@ Nastachku::Application.routes.draw do
   end
 
   scope module: :web do
-    resources :users, only: [:new, :create, :index]
+    resources :users, only: [:index]
     resources :lectures, only: [ :index ]
     resources :pages, only: [:show]
     resources :news, only: [:index]

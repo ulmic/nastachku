@@ -16,13 +16,13 @@ class Web::SocialNetworksController < Web::ApplicationController
       flash_success
     else
       user = User.find_by_email(auth_hash[:info][:email])
-      
+
       if !user
         save_auth_hash_to_session
-        redirect_to new_user_path
+        redirect_to root_path
         return
       end
-        
+
       user.authorizations << build_authorization(auth_hash)
 
       if !user.inactive? && user.save
@@ -33,7 +33,7 @@ class Web::SocialNetworksController < Web::ApplicationController
         flash_error
       end
 
-    end    
+    end
     redirect_to root_path
   end
 

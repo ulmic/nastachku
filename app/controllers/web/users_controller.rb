@@ -8,15 +8,6 @@ class Web::UsersController < Web::ApplicationController
     respond_with(@users)
   end
 
-  def new
-    @user = UserRegistrationType.new
-
-    if registration_by_soc_network?
-      @user = UserPopulator.via_facebook(@user, session_auth_hash)
-    end
-
-  end
-
   def activate
     token = User::AuthToken.find_by_authentication_token!(params[:auth_token])
     user = token.user
@@ -28,30 +19,6 @@ class Web::UsersController < Web::ApplicationController
       flash_error
     end
     redirect_to root_path
-  end
-
-  def create
-    @user = UserRegistrationType.new(params[:user])
-
-    if @user.save
-      
-      if registration_by_soc_network?
-        @user.authorizations << build_authorization(session_auth_hash)
-        @user.activate
-        clear_session_auth_hash
-        sign_in @user
-        redirect_to root_path
-      else
-        token = @user.create_auth_token
-        UserMailer.confirm_registration(@user, token).deliver
-        flash_success
-        redirect_to new_session_path
-      end
-
-    else
-      flash_error
-      render action: "new"
-    end
   end
 
 end
