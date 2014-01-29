@@ -1,0 +1,107 @@
+---
+ru:
+  web:
+    account:
+      lectures:
+        update:
+          title: ''
+      orders:
+        approve:
+          title: ''
+        cancel:
+          title: ''
+        decline:
+          title: ''
+        update:
+          title: ''
+        pay:
+          title: ''
+      shirt_orders:
+        create:
+          title: ''
+      social_networks:
+        link_twitter:
+          title: ''
+        unlink_twitter:
+          title: ''
+    admin:
+      audits:
+        index:
+          title: ''
+      events:
+        destroy:
+          title: ''
+        form:
+          cancel: ''
+        create:
+          title: ''
+        update:
+          title: ''
+      halls:
+        destroy:
+          title: ''
+        create:
+          title: ''
+        update:
+          title: ''
+      lectures:
+        create:
+          title: ''
+        update:
+          title: ''
+      news:
+        create:
+          title: ''
+        destroy:
+          title: ''
+        update:
+          title: ''
+      pages:
+        create:
+          title: ''
+        destroy:
+          title: ''
+        update:
+          title: ''
+      topics:
+        destroy:
+          title: ''
+        create:
+          title: ''
+        update:
+          title: ''
+      users:
+        create:
+          title: ''
+        destroy:
+          title: ''
+        update:
+          title: ''
+      workshops:
+        destroy:
+          title: ''
+        create:
+          title: ''
+        update:
+          title: ''
+    errors:
+      banned:
+        title: ''
+      internal_server_error:
+        title: ''
+      not_found:
+        title: ''
+    social_networks:
+      facebook:
+        title: ''
+      failure:
+        title: ''
+      twitter:
+        title: ''
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            state:
+              invalid_transition: ''

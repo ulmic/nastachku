@@ -2,9 +2,9 @@ Nastachku::Application.routes.draw do
 
   get "audits/index"
 
-  match "/404", :to => "web/errors#not_found"
-  match "/500", :to => "web/errors#internal_server_error"
-  match "/banned", :to => "web/errors#banned"
+  match "/404", to: "web/errors#not_found"
+  match "/500", to: "web/errors#internal_server_error"
+  match "/banned", to: "web/errors#banned"
 
   root to: "web/welcome#index"
 
@@ -36,7 +36,7 @@ Nastachku::Application.routes.draw do
 
   end
 
-  scope :module => :web do
+  scope module: :web do
     resources :users, only: [:new, :create, :index]
     resources :lectures, only: [ :index ]
     resources :pages, only: [:show]
@@ -45,7 +45,6 @@ Nastachku::Application.routes.draw do
     resources :lectors, only: [:index]
     resources :user_lectures, only: [:index]
     resource :remind_password, only: [:new, :create]
-    resource :session, only: [:new, :create, :destroy]
     resource :schedule, only: [:show]
 
     resource :user, only: [] do
@@ -53,9 +52,9 @@ Nastachku::Application.routes.draw do
     end
 
     resource :account, only: [:edit, :update] do
-      scope :module => :account do
+      scope module: :account do
         resource :password, only: [:edit, :update]
-        resource :social_networks, :only => [] do
+        resource :social_networks, only: [] do
           #FIXME по REST тут должен быть put. Решить проблему вызова экшена из другого контроллера
           get :link_twitter
           put :unlink_twitter
@@ -63,7 +62,7 @@ Nastachku::Application.routes.draw do
 
         resources :lectures, only: [ :new, :create, :update ]
         resources :orders, only: [:update] do
-          put :pay, :on => :member
+          put :pay, on: :member
 
           collection do
             post :approve
@@ -76,8 +75,8 @@ Nastachku::Application.routes.draw do
       end
     end
 
-    resource :social_networks, :only => [] do 
-      get :authorization, :on => :member
+    resource :social_networks, only: [] do
+      get :authorization, on: :member
     end
 
     namespace :admin do
