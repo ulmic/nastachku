@@ -19,4 +19,6 @@
 /config/database.yml
 /config/credentials.yml
 nastachku_development
+nastachku_production
+nastachku_staging_2014
 nastachku_test
