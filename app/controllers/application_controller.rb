@@ -6,5 +6,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :deny_banned_user!
 
+  unless (Rails.env.development?)
+    rescue_from ActionView::MissingTemplate, ActiveRecord::RecordNotFound do |exception|
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
 end
 
