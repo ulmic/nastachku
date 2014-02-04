@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module AuthHelper
 
   def sign_in(user)
@@ -19,12 +20,12 @@ module AuthHelper
 
   def authenticate_user!
     unless signed_in?
-      redirect_to new_session_path(from: request.url)
+      redirect_to "/404"
     end
   end
 
   def authenticate_admin!
-    redirect_to new_session_path unless signed_as_admin?
+    redirect_to "/404"
   end
 
   def current_user
