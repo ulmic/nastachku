@@ -6,6 +6,7 @@ Nastachku::Application.configure do
   config.assets.compress = true
   config.assets.compile = true
   config.assets.digest = true
+  config.assets.initialize_on_precompile = true
   config.assets.precompile += %w( ckeditor/* )
   config.assets.precompile += %w( web/application.js web/application.css admin/application.js admin/application.css *.ttf *.svg *.eot *.woff )
   config.i18n.fallbacks = true
