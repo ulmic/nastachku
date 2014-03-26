@@ -1,5 +1,6 @@
 class HallDecorator < Draper::Decorator
   delegate_all
+  decorates_association :slot
 
   def lectures_sorted_by_time
     model.slots
