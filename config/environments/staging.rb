@@ -67,13 +67,5 @@ Nastachku::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    :user_name => 'nastachku-staging123-726c284e131f6298',
-    :password => '201be72c787fb008',
-    :address => 'mailtrap.io',
-    :port => '2525',
-    :authentication => :plain,
-  }
-
+  ActionMailer::Base.smtp_settings[:enable_starttls_auto] = false
 end
