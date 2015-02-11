@@ -1,7 +1,7 @@
 class UserPasswordRemindType
   include ActiveModel::Validations
   include ActiveModel::Conversion
-  include Virtus
+  include Virtus.model
 
   attribute :email, String
 
@@ -16,7 +16,6 @@ class UserPasswordRemindType
   def persisted?
     false
   end
-
 
   def user
     @user ||= User.find_by_email(email)

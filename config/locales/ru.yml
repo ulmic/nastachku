@@ -76,7 +76,10 @@ ru:
             workshops: 'Секции'
             halls: 'Залы'
             events: 'События'
-
+  shared:
+    empty_lectures:
+      not_added_yet: 'Пока не добавлено ни одного доклада. Вы можете'
+      first_speaker: 'стать первым докладчиком.'
   web:
     accounts:
       edit:
@@ -92,8 +95,6 @@ ru:
         info: 'Мои данные'
         my_events: 'Мои доклады'
         my_orders: 'Мои заказы'
-        add_user_event_text: 'Вами пока не добавлено ни одного доклада.'
-        add_user_event: 'Добавить доклад'
         link_twitter: 'Привязать аккаунт'
         unlink_twitter: 'Отключить'
         twitter_account: 'Твиттер'
@@ -102,8 +103,6 @@ ru:
         buy_shirt: 'Купить футболку'
         buy_more: "Оформить еще один заказ"
         cost: "Стоимость"
-        add_more_user_event_text: 'Есть еще один умопомрачительный доклад?'
-        add_more_user_event_link: 'Добавляй!'
         pay: Оплата участия
         enter_promo_code: Ввести промо-код
         stachka_ticket: Билет на Стачку
@@ -173,7 +172,7 @@ ru:
           item_size: "Размер"
           t_shirt: "Футболка"
           tshirt_promo: "Отхвати себе кусочек Стачко-стиля и будь в тренде!   Дело за малым – жми на заказ и приобщайся к нашему движению. Фирменная футболка «Стачки!» уже готова прыгнуть в твой гардероб."
-          thisrt_promo_ps: " P.S.: Ты получишь ее в день конференции – 11 апреля. До встречи в Ленинском Мемориале!"
+          thisrt_promo_ps: " P.S.: Ты получишь ее в день конференции – 10 апреля. До встречи в Ленинском Мемориале!"
           buy_afterparty_ticket_before: "И не забудь"
           buy_afterparty_ticket_after: "билет на афтепати! ;)"
           buy_afterparty_ticket_action: "купить"
@@ -201,7 +200,7 @@ ru:
         title: 'Пойдут на стачку'
       users:
         registred_title: "Зарегистрировалось – %{activated_count} %{participant}. "
-        zero_participants: "Пока не зарегистрировалось ни одного участника международной конференции СТАЧКА 2014."
+        zero_participants: "Пока не зарегистрировалось ни одного участника международной конференции СТАЧКА 2015."
         one_participant: 'участник'
         two_participant: 'участника'
         many_participant: 'участников'
@@ -209,8 +208,8 @@ ru:
 
     welcome:
       index:
-        hero_unit_title: 'Стачка 2014'
-        hero_unit_content: '<br>УЛЬЯНОВСК 11-12 АПРЕЛЯ 2014 МЕМЦЕНТР<br>Веб-технологии, менеджмент в IT, электронная коммерция, IT-стартапы, программирование, IT на службе в обществе'
+        hero_unit_title: 'Стачка 2015'
+        hero_unit_content: '<br>УЛЬЯНОВСК 11-12 АПРЕЛЯ 2015 МЕМЦЕНТР<br>Веб-технологии, менеджмент в IT, электронная коммерция, IT-стартапы, программирование, IT на службе в обществе'
         join: 'Я пойду!'
 
     user_lectures:
@@ -221,8 +220,6 @@ ru:
         user_lectures_title_link: 'предложите его'
         user_lectures_title_after_link: 'и выступите на конференции.'
       lectures:
-        not_added_yet: 'Пока не добавлено ни одного доклада. Вы можете'
-        first_speaker: 'стать первым докладчиком.'
         sort_by: 'Сортировать'
         by_lecture_votings_count: 'По количеству голосов'
         by_created_at: 'По дате добавления'
@@ -280,8 +277,13 @@ ru:
         auth_for_vote: 'Авторизуйтесь, чтобы проголосовать'
 
       show:
+        schedule_empty: 'Программа формируется'
         show_scheme: 'Схема залов'
         buy_ticket_right_now: "Купить билет на Стачку"
+
+      programm:
+        show_scheme: 'Схема залов'
+
     errors:
       banned:
         banned: 'Ваш аккаунт заблокирован.'
@@ -338,17 +340,6 @@ ru:
         state: "Состояние"
         timepad_state: "Состояние timepad.ru"
         about: "О себе"
-
-      base_event:
-        title: 'Название'
-        presentation: 'Добавить презентацию'
-        thesises: 'Тезисы'
-        speaker: 'Докладчик'
-        start_time: 'Время начала'
-        finish_time: 'Время окончания'
-        state: 'Статус'
-        workshop: 'Секция'
-        hall: 'Зал'
 
       workshop:
         title: 'Название'
@@ -441,13 +432,6 @@ ru:
             update:
               success: 'Пользователь изменен.'
               error:   'Не удалось изменить пользователя, есть ошибки в заполнении форм.'
-          user_events:
-            change_state:
-              success: 'Статус изменен.'
-              error: 'Не удалось изменить статус доклада.'
-            update:
-              success: 'Доклад изменен.'
-              error:   'Не удалось изменить доклад, есть ошибки в заполнении форм.'
           events:
             create:
               success: 'Событие добавлено.'

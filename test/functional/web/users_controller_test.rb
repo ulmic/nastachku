@@ -25,8 +25,8 @@ class Web::UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     attrs = attributes_for :user
-    attrs[:password_confirmation] = attrs[:password]
     attrs[:process_personal_data] = "1"
+    attrs[:password_confirmation] = attrs[:password]
 
     post :create, user: attrs
 
@@ -37,7 +37,6 @@ class Web::UsersControllerTest < ActionController::TestCase
 
   test "should create/activate/sign in user by social network" do
     attrs = attributes_for :user
-    attrs[:password_confirmation] = attrs[:password]
     attrs[:process_personal_data] = "1"
 
     @auth_hash = generate(:facebook_auth_hash)
@@ -75,15 +74,5 @@ class Web::UsersControllerTest < ActionController::TestCase
   test "should not activate user with nil token" do
     get :activate, auth_token: nil
     assert_redirected_to welcome_index_path
-  end
-
-  test "should action cache index" do
-    cache_users_path = 'views/test.host' + users_path
-    ActionController::Base.perform_caching = true
-    Rails.cache.clear
-    assert not(ActionController::Base.cache_store.exist?(cache_users_path))
-    get :index
-    assert ActionController::Base.cache_store.exist?(cache_users_path)
-    ActionController::Base.perform_caching = false
   end
 end

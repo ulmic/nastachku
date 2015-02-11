@@ -1,10 +1,13 @@
 require File.expand_path('../boot', __FILE__)
 
+# https://github.com/activerecord-hackery/ransack/pull/341
+ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
+
 require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  Bundler.require(*Rails.groups)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
@@ -21,9 +24,6 @@ module Nastachku
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
-    # Activate observers that should always be running.
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -52,7 +52,8 @@ module Nastachku
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
-    config.active_record.observers = :user_observer
+
+    config.active_record.raise_in_transactional_callbacks = true
 
     ActionMailer::Base.default charset: "UTF-8"
 
@@ -61,7 +62,7 @@ module Nastachku
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
     config.generators do |g|
       g.template_engine :haml
       g.test_framework  :test_unit, :fixture => true, :fixture_replacement => :factory_girl
@@ -72,7 +73,7 @@ module Nastachku
     # catch 404/500 errors
     config.exceptions_app = self.routes
 
-    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
       r301 '/reporters.html', 'http://2012.nastachku.ru/reporters.html'
       r301 '/vote-comment.html', 'http://2012.nastachku.ru/'
       r301 '/day-zero.html', 'http://2012.nastachku.ru/'

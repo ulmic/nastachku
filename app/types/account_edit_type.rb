@@ -6,7 +6,7 @@ class AccountEditType < User
 
   validates :first_name,  presence: true
   validates :last_name,  presence: true
-  validates :city, presence: true
+  validates :email,  presence: true
   validates_each :old_password do |record, attr, value|
     @old_password_is_empty = (value.nil? or value.empty?)
     if !@old_password_is_empty and !User.find(record.id).authenticate(value)
@@ -22,6 +22,10 @@ class AccountEditType < User
       end
     end
   end
+
+  permit :first_name, :last_name, :email, :city, :old_password,
+         :password, :state_event, :photo,
+         :twitter_name, :vkontakte, :facebook, :company
 
   def city=(city)
     write_attribute(:city, city.mb_chars.downcase)
